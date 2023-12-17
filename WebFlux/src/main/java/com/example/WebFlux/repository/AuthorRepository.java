@@ -8,5 +8,6 @@ import reactor.core.publisher.Flux;
 import java.util.List;
 
 public interface AuthorRepository extends ReactiveMongoRepository<Author, String> {
+    @Query("{name:{$regex:?0}}")
     Flux<Author> findByNameRegex(String nameRegex);
 }
